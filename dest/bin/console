@@ -8,6 +8,11 @@ use Symfony\Component\Debug\Debug;
 
 set_time_limit(0);
 
+echo 'ENV: ';
+var_dump($_ENV);
+echo 'argv: ';
+var_dump($_SERVER['argv']);
+
 require dirname(__DIR__).'/vendor/autoload.php';
 
 if (!class_exists(Application::class)) {
