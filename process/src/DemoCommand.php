@@ -16,11 +16,14 @@ final class DemoCommand extends \Symfony\Component\Console\Command\Command
 
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
-        $this->runCmd('php bin/console --version --env=dev', '../dest');
-        $this->runCmd('php bin/console --version --env=test', '../dest');
+        $this->runCmd(['php', 'bin/console', '--version', '--env=dev'], '../dest');
+        $this->runCmd(['php', 'bin/console', '--version', '--env=test'], '../dest');
     }
 
-    private function runCmd(string $command, string $cwd): void
+    /**
+     * @param array|string $command
+     */
+    private function runCmd($command, string $cwd): void
     {
         $process = new Process($command, realpath($cwd), []);
         $process->setTimeout(300);
